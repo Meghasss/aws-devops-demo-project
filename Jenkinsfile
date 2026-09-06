@@ -41,7 +41,7 @@ pipeline {
             steps {
                 sh '''
                 docker tag $ECR_REPO:$IMAGE_TAG \
-                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
+                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${ECR_REPO}:$IMAGE_TAG
                 '''
             }
         }
@@ -49,7 +49,7 @@ pipeline {
             steps {
                 sh '''
                 docker push \
-                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
+                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/${ECR_REPO}:$IMAGE_TAG
                 '''
             }
         }
