@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                 aws ecr get-login-password --region $AWS_REGION | \
                 docker login --username AWS --password-stdin \
-                $448795057644.dkr.ecr.us-east-1.amazonaws.com/demo
+                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/demo
                 '''
             }
         }
@@ -38,7 +38,7 @@ pipeline {
             steps {
                 sh '''
                 docker tag $ECR_REPO:$IMAGE_TAG \
-                $448795057644.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
+                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
                 '''
             }
         }
