@@ -4,7 +4,7 @@ pipeline {
     environment {
         AWS_REGION = 'us-east-1'
         ECR_REPO = 'demo'
-        ACCOUNT_ID = 'YOUR_AWS_ACCOUNT_ID'
+        ACCOUNT_ID = '448795057644'
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
 
@@ -34,7 +34,7 @@ pipeline {
                 sh '''
                 aws ecr get-login-password --region $AWS_REGION | \
                 docker login --username AWS --password-stdin \
-                $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com
+                $448795057644.dkr.ecr.us-east-1.amazonaws.com/demo
                 '''
             }
         }
@@ -43,7 +43,7 @@ pipeline {
             steps {
                 sh '''
                 docker tag $ECR_REPO:$IMAGE_TAG \
-                $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+                $448795057644.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
                 '''
             }
         }
@@ -52,7 +52,7 @@ pipeline {
             steps {
                 sh '''
                 docker push \
-                $ACCOUNT_ID.dkr.ecr.$AWS_REGION.amazonaws.com/$ECR_REPO:$IMAGE_TAG
+                $448795057644.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
                 '''
             }
         }
