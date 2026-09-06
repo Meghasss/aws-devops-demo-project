@@ -49,7 +49,7 @@ pipeline {
             steps {
                 sh '''
                 docker push \
-                $448795057644.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
+                ${ACCOUNT_ID}.dkr.ecr.us-east-1.amazonaws.com/demo/$ECR_REPO:$IMAGE_TAG
                 '''
             }
         }
