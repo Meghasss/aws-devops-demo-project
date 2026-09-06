@@ -13,7 +13,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
-                url: 'https://github.com/USERNAME/aws-devops-demo-project.git'
+                url: 'https://github.com/Meghasss/aws-devops-demo-project.git'
             }
         }
 
