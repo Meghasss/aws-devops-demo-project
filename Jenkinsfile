@@ -1,34 +1,28 @@
 pipeline {
     agent any
-
     environment {
         AWS_REGION = 'us-east-1'
         ECR_REPO = 'demo'
         ACCOUNT_ID = '448795057644'
         IMAGE_TAG = "${BUILD_NUMBER}"
     }
-
     stages {
-
         stage('Checkout') {
             steps {
                 git branch: 'main',
                 url: 'https://github.com/Meghasss/aws-devops-demo-project.git'
             }
         }
-
         stage('Build Jar') {
             steps {
                 sh 'mvn clean package'
             }
         }
-
         stage('Build Docker Image') {
             steps {
                 sh 'docker build -t $ECR_REPO:$IMAGE_TAG .'
             }
         }
-
         stage('Login ECR') {
             steps {
                 withCredentials([[$class: 'AmazonWebServicesCredentialsBinding',
@@ -40,7 +34,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Tag Image') {
             steps {
                 sh '''
@@ -49,7 +42,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Push Image') {
             steps {
                 sh '''
@@ -58,7 +50,6 @@ pipeline {
                 '''
             }
         }
-
         stage('Deploy EKS') {
             steps {
                 sh '''
