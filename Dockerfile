@@ -1,5 +1,5 @@
-FROM nginx:latest
+FROM eclipse-temurin:17
 
-COPY index.html /usr/share/nginx/html/index.html
+COPY target/demo-1.0.jar app.jar
 
-EXPOSE 80
+ENTRYPOINT ["java","-jar","/app.jar"]
