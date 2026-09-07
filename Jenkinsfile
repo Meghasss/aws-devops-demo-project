@@ -10,6 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 git branch: 'main',
+                credentialsId:'github-creds',
                 url: 'https://github.com/Meghasss/aws-devops-demo-project.git'
             }
         }
